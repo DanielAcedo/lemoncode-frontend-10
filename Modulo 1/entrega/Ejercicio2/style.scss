@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 2em;
+}
+
+.box {
+  font-family: "Comic Sans MS";
+  padding: 15px;
+  width: 100px;
+  height: 80px;
+}
+
+.principal-font {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.secondary-font {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.box-with-shadow {
+  font-family: "Comic Sans MS";
+  width: 100px;
+  padding: 15px;
+  border: 1px solid black;
+}

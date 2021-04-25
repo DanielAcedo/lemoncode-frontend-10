@@ -1,0 +1,19 @@
+@mixin generate-palette($base-color) {
+  &.base-color {
+    width: 120px;
+    color: white;
+    background-color: $base-color;
+  }
+
+  @for $i from 1 to 5 {
+    &.darken-#{$i} {
+      color: gray;
+      background-color: darken($base-color, $i * 5%);
+    }
+
+    &.lighten-#{$i} {
+      color: gray;
+      background-color: lighten($base-color, $i * 5%);
+    }
+  }
+}

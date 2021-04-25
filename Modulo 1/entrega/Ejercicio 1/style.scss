@@ -1,0 +1,42 @@
+@import "./sass/mixins";
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+
+  .box {
+    height: 90px;
+    width: 80px;
+    margin: 5px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.container-1 {
+    .box {
+      @include generate-palette(red);
+    }
+  }
+
+  &.container-2 {
+    .box {
+      @include generate-palette(blue);
+    }
+  }
+
+  &.container-3 {
+    .box {
+      @include generate-palette(green);
+    }
+  }
+}

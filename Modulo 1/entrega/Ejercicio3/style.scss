@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+
+  div {
+    color: white;
+    padding: 10px;
+    flex: 3;
+    background-color: lightseagreen;
+
+    &:hover {
+      background-color: darken(lightseagreen, 20%);
+    }
+
+    &.activities {
+      flex: 1;
+      text-align: center;
+    }
+
+    &.about-me {
+      text-align: end;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  nav {
+    flex-direction: column;
+
+    div {
+      flex: 1;
+      text-align: center;
+
+      &.about-me {
+        text-align: center;
+      }
+    }
+  }
+}

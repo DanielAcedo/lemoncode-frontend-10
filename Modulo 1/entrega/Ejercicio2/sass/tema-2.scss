@@ -1,0 +1,36 @@
+$base-color: blue;
+$important-color: darken($base-color, 30%);
+$warning-color: lighten($base-color, 30%);
+$border-radius: 5px;
+
+$principal-font: Arial;
+$secondary-font: "Futura";
+$shadow-box: 10px 10px 15px 0px black;
+
+.box {
+  border-radius: $border-radius;
+
+  &.base {
+    background-color: $base-color;
+  }
+
+  &.important {
+    background-color: $important-color;
+  }
+
+  &.warning {
+    background-color: $warning-color;
+  }
+}
+
+.principal-font {
+  font-family: $principal-font;
+}
+
+.secondary-font {
+  font-family: $secondary-font;
+}
+
+.box-with-shadow {
+  box-shadow: $shadow-box;
+}
