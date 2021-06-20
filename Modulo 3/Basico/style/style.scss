@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+  background-color: antiquewhite;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+$h1-color: red;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  h1 {
+    color: $h1-color;
+  }
+
+  img {
+    width: 400px;
+    height: 100px;
+  }
+}
