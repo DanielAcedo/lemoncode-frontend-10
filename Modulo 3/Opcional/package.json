@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --env ENVIRONMENT=prod --config webpack.prod.js",
     "start": "webpack serve --open --env ENVIRONMENT=dev --config webpack.dev.js",
-    "bundle-analyzer":"webpack --env ENVIRONMENT=dev --config webpack.bundle-analyzer.js",
+    "bundle-analyzer": "webpack --env ENVIRONMENT=dev --config webpack.bundle-analyzer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -27,7 +27,8 @@
     "sass-loader": "^12.1.0",
     "webpack": "^5.40.0",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.2.1"
   },
   "dependencies": {
     "react": "^17.0.2",
