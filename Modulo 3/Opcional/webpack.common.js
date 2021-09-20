@@ -6,7 +6,7 @@ const Dotenv = require("dotenv-webpack");
 const path = require("path");
 
 module.exports = (env) => {
-  const envFilePath = env.ENVIRONMENT ? `${env.ENVIRONMENT}.env` : "prod.env";
+  const envFilePath = env.NODE_ENV ? `.env.${env.NODE_ENV}` : ".env.production";
 
   return {
     context: path.join(__dirname, "src"),
