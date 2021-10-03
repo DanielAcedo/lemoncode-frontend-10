@@ -12,8 +12,10 @@
 </template>
 
 <script lang="ts">
+import { memberDetailsRoute } from "@/router/routes";
 import { Member } from "@/types/member";
 import { defineComponent } from "vue";
+import { selectedOrganisationService } from "../services/selectedOrganisation";
 import MemberList from "../components/MemberList.vue";
 import OrganisationSearch from "../components/OrganisationSearch.vue";
 
@@ -29,18 +31,20 @@ export default defineComponent({
   methods: {
     onSearch(organisationName: string) {
       this.organisationName = organisationName;
-      localStorage.setItem("selectedOrganization", this.organisationName);
+      selectedOrganisationService.setSelectedOrganisation(
+        this.organisationName
+      );
     },
     onMemberSelected(member: Member) {
       this.$router.push({
-        name: "MemberDetails",
-        params: { name: member.login },
+        name: memberDetailsRoute.name,
+        params: memberDetailsRoute.buildParams(member.login),
       });
     },
   },
   created() {
     this.organisationName =
-      localStorage.getItem("selectedOrganization") || "lemoncode";
+      selectedOrganisationService.getSelectedOrganisation() || "lemoncode";
   },
 });
 </script>
