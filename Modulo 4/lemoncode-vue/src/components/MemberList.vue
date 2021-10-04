@@ -62,7 +62,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .organisation-name {
   text-align: center;
 }
