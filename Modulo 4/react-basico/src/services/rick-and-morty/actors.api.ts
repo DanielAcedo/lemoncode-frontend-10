@@ -16,24 +16,26 @@ export const getFilteredActors = (
     mapToActorResponse(res)
   );
 
+export const getActor = (id: string): Promise<ActorEntity> =>
+  fetchJson(`${baseUrl}/character/${id}`).then(mapToActorEntity);
 const mapToActorResponse = (res) => {
   const response = <ActorResponse>res;
 
   if (!response.results) response.results = [];
   else {
-    response.results = res.results.map(
-      (item) =>
-        <ActorEntity>{
-          id: item.id,
-          gender: item.gender,
-          imageUrl: item.image,
-          location: item.location.name,
-          name: item.name,
-          species: item.species,
-          status: item.status,
-        }
-    );
+    response.results = res.results.map(mapToActorEntity);
   }
 
   return response;
 };
+
+const mapToActorEntity = (apiActor) =>
+  <ActorEntity>{
+    id: apiActor.id,
+    gender: apiActor.gender,
+    imageUrl: apiActor.image,
+    location: apiActor.location.name,
+    name: apiActor.name,
+    species: apiActor.species,
+    status: apiActor.status,
+  };

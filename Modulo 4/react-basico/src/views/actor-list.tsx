@@ -82,6 +82,12 @@ function ActorListPage() {
               ></ActorSearchPreview>
             ))}
           </div>
+          <Pagination
+            css={paginationStyle}
+            count={totalPages}
+            page={page}
+            onChange={onPageChange}
+          />
         </>
       )}
     </div>
