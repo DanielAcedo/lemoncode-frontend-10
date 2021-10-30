@@ -6,6 +6,7 @@ import { css } from "@emotion/react";
 const container = css`
   display: flex;
   align-items: center;
+  margin-top: 1em;
 `;
 
 interface Props {

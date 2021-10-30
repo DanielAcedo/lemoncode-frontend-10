@@ -4,29 +4,39 @@ import { LoginPage } from "./views/login";
 import { ListPage } from "./views/list";
 import { DetailPage } from "./views/detail";
 import CssBaseline from "@mui/material/CssBaseline";
-import Appbar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/toolbar";
-import Typography from "@mui/material/Typography";
+import ActorListPage from "./views/actor-list";
+import CustomAppbar from "./components/appBar";
+import {
+  actorDetailRoute,
+  actorListRoute,
+  homeRoute,
+  organisationListRoute,
+  organisationUserDetailsRoute,
+} from "./routes";
+import ActorDetailPage from "./views/actor-detail";
 
 export const App = () => {
   return (
     <>
       <CssBaseline />
-      <Appbar position="static">
-        <Toolbar>
-          <Typography>Organisation member list</Typography>
-        </Toolbar>
-      </Appbar>
       <Router>
+        <CustomAppbar></CustomAppbar>
+
         <Switch>
-          <Route exact path="/">
+          <Route exact path={homeRoute.path}>
             <LoginPage />
           </Route>
-          <Route path="/list">
+          <Route path={organisationListRoute.path}>
             <ListPage />
           </Route>
-          <Route path="/detail/:id">
+          <Route path={organisationUserDetailsRoute.path}>
             <DetailPage />
+          </Route>
+          <Route path={actorListRoute.path}>
+            <ActorListPage />
+          </Route>
+          <Route path={actorDetailRoute.path}>
+            <ActorDetailPage />
           </Route>
         </Switch>
       </Router>
