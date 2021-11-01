@@ -17,6 +17,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableFooter from "@mui/material/TableFooter";
 import TablePagination from "@mui/material/TablePagination";
+import { organisationUserDetailsRoute } from "../routes";
 
 const organisationSearchContainer = css`
   display: flex;
@@ -79,7 +80,11 @@ export const ListPage: React.FC = () => {
                 </TableCell>
                 <TableCell>{member.id}</TableCell>
                 <TableCell>
-                  <Link to={generatePath("/detail/:id", { id: member.login })}>
+                  <Link
+                    to={generatePath(organisationUserDetailsRoute.path, {
+                      id: member.login,
+                    })}
+                  >
                     {member.login}
                   </Link>
                 </TableCell>

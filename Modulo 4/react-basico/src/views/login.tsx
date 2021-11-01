@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import { organisationListRoute } from "../routes";
 
 export const LoginPage: React.FC = () => {
   const history = useHistory();
@@ -9,7 +10,7 @@ export const LoginPage: React.FC = () => {
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (username === "admin" && password === "test") {
-      history.push("/list");
+      history.push(organisationListRoute.path);
     } else {
       alert("User / password not valid, psst... admin / test");
     }
