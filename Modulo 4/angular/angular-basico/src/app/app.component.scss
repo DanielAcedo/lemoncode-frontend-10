@@ -1,0 +1,30 @@
+.menu {
+  &__logo {
+    height: 90%;
+  }
+
+  &__right-side {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  &__page-list {
+    display: flex;
+  }
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .app-router {
+    flex-grow: 1;
+  }
+}
+
+.sidebar-container {
+  height: calc(100% - 64px);
+}

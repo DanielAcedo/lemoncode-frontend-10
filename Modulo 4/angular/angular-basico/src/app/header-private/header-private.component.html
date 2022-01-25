@@ -1,0 +1,12 @@
+<div *ngIf="isLogged()">
+  <a mat-button href="/dashboard">Dashboard</a>
+  <a mat-button href="/gallery">Galería</a>
+  <a mat-button href="/crud">CRUD</a>
+  <a mat-button href="/profile">Profile</a>
+  <span>
+    {{ userName() }}
+    <a mat-icon-button (click)="logout()">
+      <mat-icon aria-label="logout">logout</mat-icon>
+    </a>
+  </span>
+</div>

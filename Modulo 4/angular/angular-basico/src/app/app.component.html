@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class="menu">
+  <img class="menu__logo" src="/assets/logo.png" />
+  <span>AngularLab</span>
+
+  <div class="menu__right-side">
+    <!-- <button (click)="toggleSidebar()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <div class="menu__page-list">
+      <app-header-public></app-header-public>
+      <app-header-private></app-header-private>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidebar-container">
+  <mat-sidenav [opened]="sidebarOpened" position="end">
+    sidenav content
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="app-content">
+      <div class="app-router">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

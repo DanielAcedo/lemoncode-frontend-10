@@ -1,0 +1,48 @@
+<div class="wrapper">
+  <mat-card>
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <div class="login-form">
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <input
+            name="username"
+            matInput
+            required
+            [(ngModel)]="authModel.userName"
+            placeholder="Nombre de usuario"
+            #userName="ngModel"
+          />
+          <mat-error *ngIf="userName.errors?.['required']">
+            El nombre de usuario es obligatorio
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input
+            name="password"
+            matInput
+            required
+            minlength="5"
+            [(ngModel)]="authModel.password"
+            type="password"
+            #password="ngModel"
+          />
+          <mat-error *ngIf="password.errors?.['required']">
+            La contraseña es obligatoria
+          </mat-error>
+          <mat-error *ngIf="password.errors?.['minlength']">
+            La contraseña debe tener al menos 5 caracteres
+          </mat-error>
+        </mat-form-field>
+        <button
+          type="submit"
+          class="login-button"
+          mat-raised-button
+          color="primary"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

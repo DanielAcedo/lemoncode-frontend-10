@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+
+  .login-button {
+    margin-top: 1em;
+  }
+}
