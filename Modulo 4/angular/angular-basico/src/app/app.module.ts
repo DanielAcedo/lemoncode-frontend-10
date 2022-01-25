@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { GalleryComponent } from './gallery/components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatDividerModule } from '@angular/material/divider';
     GalleryScreenComponent,
     CrudScreenComponent,
     ProfileScreenComponent,
+    GalleryComponent,
   ],
   imports: [
     CommonModule,

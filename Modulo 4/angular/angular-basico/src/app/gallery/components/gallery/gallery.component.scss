@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3em;
+}
+
+.selected-image {
+  display: flex;
+  justify-content: center;
+  height: 600px;
+  margin-bottom: 2em;
+
+  img {
+    object-fit: scale-down;
+    width: 100%;
+  }
+}
+
+.image-list {
+  display: flex;
+  justify-content: space-evenly;
+  height: 200px;
+
+  img {
+    height: 200px;
+    width: 150px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.controls {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+
+  button mat-icon {
+    font-size: 2rem;
+  }
+}

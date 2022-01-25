@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <div *ngIf="selectedImage" class="selected-image">
+    <img [src]="selectedImage.image.src" alt="" />
+  </div>
+  <div class="image-list">
+    <div (click)="selectImage(image)" *ngFor="let image of galleryImages">
+      <img [src]="image.src" alt="" />
+    </div>
+  </div>
+  <div class="controls">
+    <button
+      (click)="previousImage()"
+      [disabled]="isPreviousImageDisabled()"
+      mat-icon-button
+    >
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <button
+      (click)="nextImage()"
+      [disabled]="isNextImageDisabled()"
+      mat-icon-button
+    >
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>zoom_in</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>zoom_out</mat-icon>
+    </button>
+    <button (click)="play()" [disabled]="isPlayDisabled()" mat-icon-button>
+      <mat-icon>play_circle</mat-icon>
+    </button>
+    <button (click)="pause()" [disabled]="isPauseDisabled()" mat-icon-button>
+      <mat-icon>pause</mat-icon>
+    </button>
+  </div>
+</div>
