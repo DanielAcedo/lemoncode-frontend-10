@@ -1,10 +1,45 @@
 <div class="wrapper">
   <div *ngIf="selectedImage" class="selected-image">
-    <img [src]="selectedImage.image.src" alt="" />
+    <img
+      [src]="selectedImage.image.src"
+      alt=""
+      appZoom
+      [multiplier]="currentZoomMultiplier"
+    />
   </div>
-  <div class="image-list">
-    <div (click)="selectImage(image)" *ngFor="let image of galleryImages">
-      <img [src]="image.src" alt="" />
+  <div class="image-paginator">
+    <div class="image-paginator__button">
+      <button
+        (click)="paginatePrevious()"
+        [disabled]="isPaginatePreviousDisabled()"
+        mat-icon-button
+      >
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+    </div>
+    <div class="image-list">
+      <div
+        *ngFor="
+          let image of galleryImages
+            | slice: paginatorStartIndex:paginatorEndIndex
+        "
+        (click)="selectImage(image)"
+        class="image-list__image"
+        [class.image-list__image--selected]="
+          selectedImage?.image?.id === image.id
+        "
+      >
+        <img [src]="image.src" alt="" />
+      </div>
+    </div>
+    <div class="image-paginator__button">
+      <button
+        (click)="paginateNext()"
+        [disabled]="isPaginateNextDisabled()"
+        mat-icon-button
+      >
+        <mat-icon>navigate_next</mat-icon>
+      </button>
     </div>
   </div>
   <div class="controls">
@@ -22,10 +57,10 @@
     >
       <mat-icon>navigate_next</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button (click)="zoomIn()" mat-icon-button>
       <mat-icon>zoom_in</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button (click)="zoomOut()" mat-icon-button>
       <mat-icon>zoom_out</mat-icon>
     </button>
     <button (click)="play()" [disabled]="isPlayDisabled()" mat-icon-button>

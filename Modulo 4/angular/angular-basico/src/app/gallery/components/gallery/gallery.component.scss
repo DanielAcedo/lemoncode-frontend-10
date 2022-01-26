@@ -16,17 +16,46 @@
   }
 }
 
+.image-paginator {
+  display: flex;
+  justify-content: center;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button mat-icon {
+      font-size: 2rem;
+    }
+  }
+}
+
 .image-list {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 200px;
 
   img {
+    object-fit: cover;
     height: 200px;
     width: 150px;
+    padding: 0 2em;
 
     &:hover {
       cursor: pointer;
+    }
+  }
+
+  &__image {
+    opacity: 0.5;
+
+    &:hover:not(&--selected) {
+      opacity: 0.7;
+    }
+
+    &--selected {
+      opacity: 1;
     }
   }
 }

@@ -19,6 +19,11 @@ export class GalleryComponent implements OnInit {
   public selectedImage?: SelectedImage | null = null;
   public currentZoomMultiplier: number = 1;
 
+  private paginatorPageSize: number = 3;
+  public paginatorStartIndex: number = 0;
+  public paginatorEndIndex: number =
+    this.paginatorStartIndex + this.paginatorPageSize;
+
   private slideShow$?: Observable<any>;
   private slideShowSubscription?: Subscription;
 
@@ -56,6 +61,7 @@ export class GalleryComponent implements OnInit {
     const newImage = this.galleryImages[newIndex];
 
     this.selectedImage = { image: newImage, index: newIndex };
+    this.navigateToImageIfNotVisible(newIndex);
   }
 
   isNextImageDisabled(): boolean {
@@ -69,15 +75,65 @@ export class GalleryComponent implements OnInit {
     const newImage = this.galleryImages[newIndex];
 
     this.selectedImage = { image: newImage, index: newIndex };
+    this.navigateToImageIfNotVisible(newIndex);
   }
 
   isPreviousImageDisabled(): boolean {
     return this.selectedImageIndex === 0;
   }
 
-  zoomIn() {}
+  paginateNext() {
+    this.paginatorStartIndex =
+      this.paginatorStartIndex + this.paginatorPageSize;
+    this.paginatorEndIndex = this.paginatorEndIndex + this.paginatorPageSize;
+  }
 
-  zoomOut() {}
+  isPaginateNextDisabled() {
+    return this.paginatorEndIndex >= this.galleryImages.length;
+  }
+
+  paginatePrevious() {
+    this.paginatorStartIndex =
+      this.paginatorStartIndex - this.paginatorPageSize;
+    this.paginatorEndIndex = this.paginatorEndIndex - this.paginatorPageSize;
+  }
+
+  isPaginatePreviousDisabled() {
+    return this.paginatorStartIndex <= 0;
+  }
+
+  navigateToImageIfNotVisible(imageIndex: number) {
+    const isVisible =
+      imageIndex >= this.paginatorStartIndex &&
+      imageIndex < this.paginatorEndIndex;
+
+    if (isVisible) return;
+
+    const visiblePage = Math.floor(imageIndex / this.paginatorPageSize) + 1;
+    this.navigateToPage(visiblePage);
+  }
+
+  navigateToPage(pageNumber: number) {
+    const maxPageNumber =
+      Math.floor(this.galleryImages.length / this.paginatorPageSize) + 1;
+    if (pageNumber < 1 || pageNumber > maxPageNumber) return;
+
+    const newPaginatorStartIndex = this.paginatorPageSize * (pageNumber - 1);
+    const newPaginatorEndIndex =
+      newPaginatorStartIndex + this.paginatorPageSize;
+
+    this.paginatorStartIndex = newPaginatorStartIndex;
+    this.paginatorEndIndex = newPaginatorEndIndex;
+  }
+
+  zoomIn() {
+    this.currentZoomMultiplier += 0.2;
+  }
+
+  zoomOut() {
+    const newZoom = Math.max(this.currentZoomMultiplier - 0.2, 0.1);
+    this.currentZoomMultiplier = newZoom;
+  }
 
   play() {
     if (this.isPlayDisabled()) return;
