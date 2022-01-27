@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { AuthModel } from './auth.model';
 
 @Injectable({
@@ -12,15 +14,16 @@ export class AuthService {
     this.loadLoggedUserFromStorage();
   }
 
-  login(model: AuthModel): boolean {
+  login(model: AuthModel): Observable<boolean> {
     const { userName, password } = model;
+    let result$: Observable<boolean> = of(false);
 
     if (userName === 'master8@lemoncode.net' && password === '12345678') {
       this.saveLoggedUser(model);
-      return true;
+      result$ = of(true);
     }
 
-    return false;
+    return result$.pipe(delay(2000));
   }
 
   logout() {

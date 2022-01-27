@@ -13,4 +13,13 @@
   .login-button {
     margin-top: 1em;
   }
+
+  .loading-image {
+    display: flex;
+    justify-content: center;
+
+    &__image {
+      object-fit: cover;
+    }
+  }
 }

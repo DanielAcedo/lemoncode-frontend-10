@@ -34,6 +34,18 @@
             La contraseña debe tener al menos 5 caracteres
           </mat-error>
         </mat-form-field>
+        <div *ngIf="invalidLogin">
+          <mat-error>Credenciales incorrectas</mat-error>
+        </div>
+        <div class="loading-image" *ngIf="loading">
+          <img
+            class="loading-image__image"
+            height="100"
+            width="300"
+            src="assets/loading.gif"
+            alt=""
+          />
+        </div>
         <button
           type="submit"
           class="login-button"

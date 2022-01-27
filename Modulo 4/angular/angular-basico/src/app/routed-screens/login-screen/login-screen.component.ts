@@ -10,18 +10,25 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class LoginScreenComponent implements OnInit {
   public authModel: AuthModel = { userName: '', password: '' };
+  public loading: boolean = false;
+  public invalidLogin: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
-    const isLoginValid = this.authService.login(this.authModel);
+    this.loading = true;
+    this.authService.login(this.authModel).subscribe(
+      (isLoginValid) => {
+        this.invalidLogin = !isLoginValid;
 
-    console.info(isLoginValid);
-
-    if (isLoginValid) {
-      this.router.navigate(['/dashboard']);
-    }
+        if (isLoginValid) {
+          this.router.navigate(['/dashboard']);
+        }
+      },
+      null,
+      () => (this.loading = false)
+    );
   }
 }
