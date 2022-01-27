@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { LoginPage } from "./views/login";
 import { ListPage } from "./views/list";
 import { DetailPage } from "./views/detail";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -24,7 +23,7 @@ export const App = () => {
 
         <Switch>
           <Route exact path={homeRoute.path}>
-            <LoginPage />
+            <ListPage />
           </Route>
           <Route path={organisationListRoute.path}>
             <ListPage />
