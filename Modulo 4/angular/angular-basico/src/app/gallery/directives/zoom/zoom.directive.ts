@@ -6,6 +6,10 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import {
+  ImageManipulationService,
+  TransformType,
+} from '../../services/image-manipulation/image-manipulation.service';
 
 @Directive({
   selector: '[appZoom]',
@@ -15,15 +19,14 @@ export class ZoomDirective implements OnInit, OnChanges {
   multiplier: number = 1;
 
   private domElement: HTMLElement | null = null;
-  private originalWidth: number = 0;
-  private originalHeight: number = 0;
 
-  constructor(private element: ElementRef) {}
+  constructor(
+    private element: ElementRef,
+    private imageManipulationService: ImageManipulationService
+  ) {}
 
   ngOnInit() {
     this.domElement = HTMLElement = this.element.nativeElement;
-    this.originalWidth = +(this.domElement?.style.width || 0);
-    this.originalHeight = +(this.domElement?.style.height || 0);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -32,7 +35,12 @@ export class ZoomDirective implements OnInit, OnChanges {
 
   applyZoom() {
     if (this.domElement) {
-      this.domElement.style.transform = `scale(${this.multiplier.toString()})`;
+      const newTransform = this.imageManipulationService.applyTransformProperty(
+        this.domElement.style.transform,
+        this.multiplier.toString(),
+        TransformType.Scale
+      );
+      this.domElement.style.transform = newTransform;
     }
   }
 }

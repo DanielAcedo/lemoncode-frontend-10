@@ -26,6 +26,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { GalleryComponent } from './gallery/components/gallery/gallery.component';
 import { ZoomDirective } from './gallery/directives/zoom/zoom.directive';
+import { RotateDirective } from './gallery/directives/rotate/rotate.directive';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ZoomDirective } from './gallery/directives/zoom/zoom.directive';
     ProfileScreenComponent,
     GalleryComponent,
     ZoomDirective,
+    RotateDirective,
   ],
   imports: [
     CommonModule,
