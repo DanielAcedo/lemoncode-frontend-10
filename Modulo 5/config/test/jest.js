@@ -8,4 +8,5 @@ module.exports = {
     '^common(.*)$': '<rootDir>/src/common/$1',
     '^core(.*)$': '<rootDir>/src/core/$1',
   },
+  testPathIgnorePatterns: ['<rootDir>/cypress/'],
 };
