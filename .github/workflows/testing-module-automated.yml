@@ -1,4 +1,4 @@
-name: Unit Testing CI for Testing Module
+name: Automated e2e Testing CI for Testing Module
 
 on: pull_request
 
