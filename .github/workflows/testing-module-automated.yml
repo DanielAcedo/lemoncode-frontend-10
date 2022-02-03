@@ -1,4 +1,4 @@
-name: Unit Testing CI for Testing Module
+name: Automated e2e Testing CI for Testing Module
 
 on: pull_request
 
@@ -16,5 +16,5 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Tests
-        run: npm test
+      - name: Automated Tests
+        run: npm run test:e2e:ci
