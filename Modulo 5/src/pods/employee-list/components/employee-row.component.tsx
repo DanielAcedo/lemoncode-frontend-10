@@ -27,7 +27,7 @@ export const EmployeeRowComponent: React.FunctionComponent<Props> = ({
       <CellComponent>{row.email}</CellComponent>
       <CellComponent>
         {row.lastDateIncurred}
-        <IconButton onClick={() => onEdit(row.id)}>
+        <IconButton aria-label="edit employee" onClick={() => onEdit(row.id)}>
           <EditIcon />
         </IconButton>
         <IconButton onClick={() => onDelete(row)}>
