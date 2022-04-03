@@ -19,7 +19,7 @@ interface Props {
   onDelete: (id: number) => void;
 }
 
-export const HotelCard: React.FunctionComponent<Props> = (props) => {
+export const CharacterCard: React.FunctionComponent<Props> = (props) => {
   const { character, onEdit, onDelete } = props;
 
   return (
@@ -37,16 +37,13 @@ export const HotelCard: React.FunctionComponent<Props> = (props) => {
             style={{ height: 0, paddingTop: '56.25%' }}
           />
           <Typography variant="subtitle1" gutterBottom>
-            {character.status}
+            Status: {character.status}
           </Typography>
         </div>
       </CardContent>
       <CardActions>
         <IconButton onClick={() => onEdit(character.id)}>
           <EditIcon />
-        </IconButton>
-        <IconButton onClick={() => onDelete(character.id)}>
-          <DeleteIcon />
         </IconButton>
       </CardActions>
     </Card>
